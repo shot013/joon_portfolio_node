@@ -1,0 +1,19 @@
+{
+  "name": "mongodb_config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mongodb_config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "express-error-handler": "^1.1.0",
+    "express-session": "^1.17.0",
+    "http": "0.0.0",
+    "path": "^0.12.7"
+  }
+}
