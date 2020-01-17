@@ -14,4 +14,9 @@ module.exports = (app) => {
         console.log('guestbook으로');
         res.render('./guestbook.html');
     });
+    
+    app.get('/scraping', (req, res) => {
+        console.log('scraping');
+        res.render('./scraping.html');
+    });
 }

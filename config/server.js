@@ -1,9 +1,10 @@
 var express = require('express'),
     http    = require('http'),
     path    = require('path');
-
 var app = express();
+
 var viewrouter  = require('./router/view_router')(app);
+var tecouter  = require('./router/event_router')(app);
 
 var bodyParser      = require('body-parser'),
     cookieParser    = require('cookie-parser'),
