@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<link rel="search" type="application/opensearchdescription+xml" href="https://ssl.pstatic.net/sstatic/search/opensearch-description.https.xml" title="Naver" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://ssl.pstatic.net/sstatic/sdyn.js?f=/au/pc/_nx/jindo_1.5.3_171116.js+/search/js/nhn.Component.js+/search/js/jindo.Component.1.1.0.js+/search/js/jindo.component.library_120927.js+/search/js/flashObject_121025.js+/au/pc/search_option/app_181122.js+/au/pc/naver_autocomplete/nhn.common.atcmp.naver_web_191114.js+/au/s/pc/_common/jindo/jindo.Rolling_140526.js+/au/pc/_common/nhn.common_181106.js+/au/pc/_nx/2017/nx_jquery_0622b.js+/au/pc/_nx/2019/nhn.common.ScriptErrorLogger.sauPc_190819.js&amp;o=search" crossorigin="anonymous"></script>
+<body>
+    
+</body>
+<script>
+(function() {
+    var $base = jQuery("._cs_game_review");
+    var jsFileURL = "https://ssl.pstatic.net/sstatic/au/pc/game/nhn.search.game.strategy_190502.js";
+    var jsLoadCallback = function() {
+        new nhn.search.game.strategy({
+            $base: $base,
+            highlightBorderColor: "#ff8a00",
+            highlightColor: "#ff8a00",
+            pages: {
+                el: $base.find("._wrap_pagenation"),
+                panelClassSelector: "._panel",
+                hideOnSinglePage: false,
+                defaultIndex: 0,
+                totalCount: 2
+            }
+        });
+    };
+    nhn.common.load_js(jsFileURL, jsLoadCallback, true, 150);
+})();
+    
+</script>
+</html>

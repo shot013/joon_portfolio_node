@@ -12,7 +12,7 @@ const scrap_html = async (url, keyword) => {
 
 const result = async (scrap_scheduler, keyword) => {
     const result = await scrap_html(scrap_scheduler, keyword);
-    return await result.data;
+    return await result;
 }
 
 module.exports = (app) => {
@@ -28,14 +28,9 @@ module.exports = (app) => {
         ]
 
         result(scrap_scheduler[0], keyword).then((html) => {
-            const $ = cheerio.load(html.toString);
-            console.log("html get  :: " + html);
-            const $reviews = $('ul .review_content').chlidren();
+            const $ = cheerio.load(html.data);
+            const $reviews = $('.type01._content');
             console.log("html 받는중 :: " + $reviews);
-            for (let i=0; i<$reviews.length; i++) {
-                console.log("html parse :: " + $reviews[i]);
-            }
-        });
-        
+        }); 
     });
 }
