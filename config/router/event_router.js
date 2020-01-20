@@ -1,6 +1,7 @@
 var axios   = require('axios');
 var cheerio = require('cheerio'); // 셀렉터
 var request = require('request');
+var puppeteer = require('puppeteer');
 
 function google_search(body) {
     const $ = cheerio.load(body);
@@ -82,8 +83,24 @@ function daum_search(body) {
 module.exports = (app) => {
     // router
 //  퍼펫티어 사용하여 스크린샷 처리
-    app.get('/scrapCapture', (req, res) => {
-        console.log('scrapCapture');
+    app.get('/scrapCapture', async (req, res) => {
+        let keyword = encodeURIComponent(req.query.keyword);
+        let scrap_scheduler = [
+            ['https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=', 'naver.png'],
+            ['https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&q=', 'daum.png'],
+            ['https://www.google.com/search?sxsrf=ACYBGNS9zevVWU4jma9n3fBFbmijQVsnJA%3A1579500092917&source=hp&ei=PEIlXsTkNeCMr7wP4ai7wAM&gs_l=psy-ab.3..35i39j0i131j0i20i263j0l7.810.3632..3845...8.0..4.131.1661.0j15......0....1..gws-wiz.....10..0i10j35i362i39j0i67.NlceH30-Oug&ved=0ahUKEwjE8tWvwJHnAhVgxosBHWHUDjgQ4dUDCAY&uact=5&q=', 'google.png']
+        ]
+        
+        for(let i=0; i<scrap_scheduler.length; i++) {
+            console.log('screenshot' + i);
+            const browser   = await puppeteer.launch();
+            const page      = await browser.newPage();
+            await page.goto(scrap_scheduler[i][0]+keyword);
+            await page.screenshot({path: scrap_scheduler[i][1]});
+            await browser.close();
+        }
+
+        
     });
     
     app.get('/scrap', (req, res) => {

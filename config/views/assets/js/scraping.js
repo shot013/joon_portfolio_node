@@ -1,5 +1,20 @@
 function scrap() {
+    $.ajax({
+        url: './scrapCapture',
+        data : {
+            keyword : $('#search_keyword').val()   
+        },
+        dataType: 'json',
+        success : (res) => {
+            console.log(res);
+        },
+        error : (res) => {
+            console.dir(res);
+        }
+    });
+    
     console.log('click 전달');
+    
     $.ajax({
         url: './scrap',
         data : {
