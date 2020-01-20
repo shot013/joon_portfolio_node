@@ -18,6 +18,8 @@
     "express-session": "^1.17.0",
     "http": "0.0.0",
     "iconv-lite": "^0.5.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "puppeteer": "^2.0.0",
+    "reqeust": "^2.81.1"
   }
 }
