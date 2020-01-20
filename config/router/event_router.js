@@ -2,17 +2,24 @@ var axios   = require('axios');
 var cheerio = require('cheerio'); // 셀렉터
 var request = require('request');
 
-async function google_search(body) {
+function google_search(body) {
     const $ = cheerio.load(body);
     const $titleList    = $('.srg .g .LC20lb');
-    const $textList     = $('.srg span.st');
+    const $textList     = $('.srg .s span.st');
     const $blogName     = $('.srg .iUh30.rpCHfe');
     let   googleSearchList    = [];
 
     for(let i=0; i<3; i++) {
+        let text = '';
+        let temp = $textList[i].children;
+        for (let j=0; j<temp.length; j++) {
+            if (temp[j].type == 'text') { text += temp[j].data }
+            else                        { text += temp[j].children[0].data }
+        }
+        
         let googleSearchInfo = {
             title   : $titleList[i].children[0].data,
-            text    : $textList[i].children[0].data,
+            text    : text,
             blogName: $blogName[i].children[0].data,
             regDate : ''
         }
@@ -21,7 +28,7 @@ async function google_search(body) {
     return googleSearchList;
 }
 
-async function naver_search(body){
+function naver_search(body){
     const $ = cheerio.load(body);
     const $titleList    = $('.type01._content .review_tit');
     const $textList     = $('.type01._content .review_txt');
@@ -39,7 +46,7 @@ async function naver_search(body){
     return naversearchList;
 }
 
-async function daum_search(body) {
+function daum_search(body) {
     const $ = cheerio.load(body);
     const $titleList    = $('#blogColl .f_link_b');
     const $textList     = $('#blogColl .f_eb.desc');
@@ -86,8 +93,7 @@ module.exports = (app) => {
             'https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&q=',
             'https://www.google.com/search?sxsrf=ACYBGNS9zevVWU4jma9n3fBFbmijQVsnJA%3A1579500092917&source=hp&ei=PEIlXsTkNeCMr7wP4ai7wAM&gs_l=psy-ab.3..35i39j0i131j0i20i263j0l7.810.3632..3845...8.0..4.131.1661.0j15......0....1..gws-wiz.....10..0i10j35i362i39j0i67.NlceH30-Oug&ved=0ahUKEwjE8tWvwJHnAhVgxosBHWHUDjgQ4dUDCAY&uact=5&q='
         ]
-        
-        searchList = {};
+        let searchList = {};
 
         for (let i=0; i<scrap_scheduler.length; i++) {
             let opt = {
@@ -99,15 +105,15 @@ module.exports = (app) => {
             request.get(opt, (err, res, body) => {
                 if      (i == 0) { searchList.naver = naver_search(body);   }
                 else if (i == 1) { searchList.daum  = daum_search(body);    }
-                else             { searchList.google= google_search(body);  }
+                else if (i == 2) { searchList.google= google_search(body);  }
             });
-        }      
+        }     
                         
         setTimeout( () => {
-            console.log(searchList.naver);
-            console.log(searchList.daum);
-            console.log(searchList.google);
-            
-        }, 2000);
+//            console.log(searchList.naver);
+//            console.log(searchList.daum);
+//            console.log(searchList.google);
+            res.send(searchList);
+        }, 3000);
     });
 }
