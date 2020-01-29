@@ -1,60 +1,27 @@
 function scrap() {
     $.ajax({
-        url: './scrapCapture',
+        url: './search_toon',
         data : {
-            keyword : $('#search_keyword').val()   
+            portal : $('#portal').val(),
+            toon : $('#toon').val()   
         },
         dataType: 'json',
         success : (res) => {
             console.log(res);
-        },
-        error : (res) => {
-            console.dir(res);
-        }
-    });
-    
-    console.log('click 전달');
-    
-    $.ajax({
-        url: './scrap',
-        data : {
-            keyword : $('#search_keyword').val()   
-        },
-        dataType: 'json',
-        success : (res) => {
-            $('tbody .searches').remove();
-
-            for(let i=0; i<res.naver.length; i++) {
-                $('#naver').append(
-                    '<tr class="searches">'+
-                        '<td>' + res.naver[i].title + '</td>'+
-                        '<td colspan="2">' + res.naver[i].text + '</td>'+
-                        '<td>' + res.naver[i].blogName + '</td>'+
-                        '<td>' + res.naver[i].regDate + '</td>'+
-                    '</tr>'
-                );
-            }
-                    
-            for(let i=0; i<res.google.length; i++) {
-                $('#google').append(
-                    '<tr class="searches">'+
-                        '<td>' + res.google[i].title + '</td>'+
-                        '<td colspan="2">' + res.google[i].text + '</td>'+
-                        '<td>' + res.google[i].blogName + '</td>'+
-                        '<td>' + res.google[i].regDate + '</td>'+
-                    '</tr>'
-                );
-            }
-                    
-            for(let i=0; i<res.daum.length; i++) {
-                $('#daum').append(
-                    '<tr class="searches">'+
-                        '<td>' + res.daum[i].title + '</td>'+
-                        '<td colspan="2">' + res.daum[i].text + '</td>'+
-                        '<td>' + res.daum[i].blogName + '</td>'+
-                        '<td>' + res.daum[i].regDate + '</td>'+
-                    '</tr>'
-                );
+            $('#search_toons tr').remove();
+            if (res != 0) { 
+                for(let i=0; i<res.length; i++) {
+                    $('#search_toons').append(
+                        '<tr>'
+                            +'<td>' + res[i].title + '</td>'
+                            +'<td>' + res[i].regDate + '</td>'
+                            +'<td>' + res[i].pointNum + '</td>'
+                            +'<td>' + res[i].pointPer + '</td>'
+                        +'</tr>'
+                    );
+                }
+            } else {
+                $('#search_toons').append('<tr><td style="text-align:center;" colspan="4">해당 웹툰을 찾을 수가 없습니다.</td></tr>');
             }
         },
         error : (res) => {

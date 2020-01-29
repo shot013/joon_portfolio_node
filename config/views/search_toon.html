@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JUPITAKA WebToon Search</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/search.js"></script>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="left">
+            <a href="#menu"><span>Menu</span></a>
+        </nav>
+        <a href="index.html" class="logo">WebToon Search Page</a>
+    </header>
+    <!-- Banner -->
+	<section id="banner">
+		<div class="content">
+			<form method="post" action="#">
+				<div class="row uniform">
+					<div class="12u$">
+						<h3>웹툰 검색</h3>
+					</div>
+					<!-- Break -->
+					<div class="12u$">
+						<div class="6u 12u$(xsmall)" style="margin : auto;">
+							<input type="text" id="portal" value="daum" placeholder="포털을 입력해주세요" />
+						</div>
+					</div>
+					<div class="12u$">
+						<div class="6u 12u$(xsmall)" style="margin : auto;">
+							<input type="text" id="toon" value="무장" placeholder="웹툰이름을 입력해주세요" />
+						</div>
+					</div>
+				</div>
+				<div class="row uniform" style="margin : auto;">
+					<div class="12u$" style="padding-left:0px;">
+						<ul class="action" style="list-style : none; padding-left:0px;">
+							<li>
+								<input type="reset" value="Search" onClick="search_toon();">
+							</li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

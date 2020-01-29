@@ -6,15 +6,6 @@ var app = express();
 var viewrouter  = require('./router/view_router')(app);
 var tecouter  = require('./router/event_router')(app);
 
-var bodyParser      = require('body-parser'),
-    cookieParser    = require('cookie-parser'),
-    static          = require('serve-static'),
-    errorHandler    = require('errorhandler');
-
-var expressErrorHandler = require('express-error-handler');
-
-var expressSession = require('express-session');
-
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname + '/views'));
 app.set('view engine' + 'ejs');

@@ -33,47 +33,36 @@
             <section class="wrapper style2">
                 <div class="container">
                     <div id="content">
-                        <h2>검색하기</h2>
-                        <input id="search_keyword" type="text" value=""><input id="search_btn" type="button" value="검색" onClick="scrap();">
+                        <h2>네이버, 다음 웹툰 검색(무료 최근 5회)</h2>
+                        <table style="text-align: center;">
+                            <tbody>
+                                <tr>
+                                    <td>플랫폼</td>
+                                    <td><input id="portal" type="text" value="" style="width: 300px; vertical-align:middle;"></td>
+                                </tr>
+                                <tr>
+                                    <td>웹툰이름</td>
+                                    <td><input id="toon" type="text" value="" style="width: 300px; vertical-align:middle;"></td>
+                                </tr>
+                                <tr><td colspan="2"><input id="search_btn" type="button" value="검색" onClick="scrap();"></td></tr>
+                            </tbody>
+                        </table>
+                        
                         <!-- 네이버 -->
                         <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th colspan="5">네이버 검색결과</th>
+                                        <th>제목</th>
+                                        <th>등록일</th>
+                                        <th>평점</th>
+                                        <th>참여수(네이버)/추천수(다음)</th>
                                     </tr>
                                 </thead>
-                                <tbody id='naver'>
+                                <tbody id='search_toons'>
                                 </tbody>
                             </table>
                         </div>
-                        <img src='../../../naver.png'>
-                        <!-- 구글 -->
-                        <div class="table-wrapper">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th colspan="5">구글 검색결과</th>
-                                    </tr>
-                                </thead>
-                                <tbody id='google'>
-                                </tbody>
-                            </table>
-                        </div>
-                        <img src='../../../google.png'>
-                        <!-- 다음 -->
-                        <div class="table-wrapper">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th colspan="5">다음 검색결과</th>
-                                    </tr>
-                                </thead>
-                                <tbody id='daum'>
-                                </tbody>
-                            </table>
-                        </div>
-                        <img src='../../../daum.png'>
                     </div>
                 </div>
             </section>
