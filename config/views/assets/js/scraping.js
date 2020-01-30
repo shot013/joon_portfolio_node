@@ -9,7 +9,7 @@ function scrap() {
         success : (res) => {
             console.log(res);
             $('#search_toons tr').remove();
-            if (res != 0) { 
+            if (res != '0') { 
                 for(let i=0; i<res.length; i++) {
                     $('#search_toons').append(
                         '<tr>'
