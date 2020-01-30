@@ -21,7 +21,7 @@ function scrap() {
                     );
                 }
             } else {
-                $('#search_toons').append('<tr><td style="text-align:center;" colspan="4">해당 웹툰을 찾을 수가 없습니다.</td></tr>');
+                $('#search_toons').append('<tr><td style="text-align:center;" colspan="4">해당 웹툰을 찾을 수가 없습니다. 웹툰 및 플랫폼을 확인해주세요.</td></tr>');
             }
         },
         error : (res) => {

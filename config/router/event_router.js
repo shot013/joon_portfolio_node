@@ -29,6 +29,8 @@ module.exports = async (app) => {
             const toon_free_select  = await daum.get_free_selector(toon_scrap_epi);
             const toon_epi_info_list= await daum.get_toon_epi_info(toon_free_select);
             res.send(toon_epi_info_list);
+        } else {
+            res.send(0);
         }
     });
 }
