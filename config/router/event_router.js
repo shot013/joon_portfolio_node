@@ -30,7 +30,7 @@ module.exports = async (app) => {
             const toon_epi_info_list= await daum.get_toon_epi_info(toon_free_select);
             res.send(toon_epi_info_list);
         } else {
-            res.send(0);
+            res.send('0');
         }
     });
 }

@@ -14,7 +14,8 @@ exports.get_toon_number = (host, toon_search_url) => {
             const $ = cheerio.load(html);
             const $resultLength = $('#content .resultList');
             const $resultList = $('#content .resultList h5');
-            if ($resultLength[0].children[0].type === 'text') { resolve(0); }
+
+            if ($resultLength[0].children[0].data.includes('검색 결과가 없습니다.')) { resolve(0); }
             else { resolve($resultList[0].children[3].attribs.href); } // 해당툰 url 뽑아냄 
         });
     });
