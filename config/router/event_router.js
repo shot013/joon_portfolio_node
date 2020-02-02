@@ -1,7 +1,13 @@
 var naver       = require('./naver_modules');
 var daum        = require('./daum_modules');
 
-module.exports = async (app) => {
+module.exports = (app, bodyParser) => {
+
+    app.post('/guest_book/add_guestbook', (req, res) => {
+        console.log('요청 됨1');
+        res.send(req.body);
+    });
+
     // 웹툰검색
     app.get('/search_toon', async (req, res) => {
         const portal = req.query.portal.toUpperCase();
